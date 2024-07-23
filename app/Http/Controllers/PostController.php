@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     public function index()
     {
-        return 'hello world';
+        $posts = Post::latest()->paginate(10 );
+        $total = Post::count();
+        return view('posts/index', compact('posts', 'total'));
     }
 }

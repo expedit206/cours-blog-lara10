@@ -1,12 +1,23 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
+
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: [
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
-    "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        sans: ['inter var', ...defaultTheme.fontFamily.sans], 
+      }
+    },
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/forms")({
+      strategy: 'class', // only generate classes
+    }), 
+  ],
 }
