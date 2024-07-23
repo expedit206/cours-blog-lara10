@@ -114,7 +114,7 @@ leading-tight">{{$post['title']}}</h1>
 <p class="text-xl lg:text-2xl text-slate-600">
     {{$post['excerpt']}}
 </p>
-<a href="" class="flex items-center py-2 px-4 font-semibold 
+<a href=" {{ route('posts.show', ['post' => $post]) }} " class="flex items-center py-2 px-4 font-semibold 
 bg-slate-900 transition text-slate-50 rounded-full">
 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
