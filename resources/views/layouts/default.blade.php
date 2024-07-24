@@ -23,8 +23,9 @@
 </a>
 {{-- Formulaire de recherche --}}
 <form action="{{ route('index') }}" class="pb-3 pr-2 flex items-center 
-border-b border-b-slate-300 text-slate-300 focus-within:border-b-slate-900 focuswithin:text-slate-900 transition">
-<input id="search" value="" class="px-2 w-full outline-none leadingnone placeholder-slate-400" type="search" name="search" placeholder="Rechercher un
+border-b border-b-slate-300 text-slate-9
+00 focus-within:border-b-slate-900 focuswithin:text-slate-900 transition">
+<input id="search" value="{{ request()->search }}" class="px-2 w-full outline-none leadingnone placeholder-slate-400" type="search" name="search" placeholder="Rechercher un
 article">
 <button>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
