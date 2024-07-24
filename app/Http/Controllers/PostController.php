@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -22,10 +23,23 @@ class PostController extends Controller
         return view('posts.show', compact('post'));
     }
 
+
     public function postsByCategory(Category $category)
     {
         $posts =Post::where(
             'category_id', $category->id
+            )->latest()->paginate(10);
+            
+            $total = $posts->count();
+
+                
+        return view('posts/index', compact('posts','total'));
+    }
+
+    public function postsByTag(Tag $tag)
+    {
+        $posts =Post::whereRelation(
+            'tags', 'tags.id', $tag->id
             )->latest()->paginate(10);
             
             $total = $posts->count();

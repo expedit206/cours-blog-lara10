@@ -24,7 +24,7 @@
     <ul class="flex flex-wrap gap-2">
       @foreach ($post->tags as $tag)
           
-      <li><a href="" class="px-3 py-1 bg-indigo-700 textindigo-50 rounded-full text-sm text-white">{{ $tag->name }}</a></li>
+      <li><a href="{{ route('posts.byTag', ['tag'=>$tag]) }}" class="px-3 py-1 bg-indigo-700 textindigo-50 rounded-full text-sm text-white">{{ $tag->name }}</a></li>
       
       @endforeach
 
