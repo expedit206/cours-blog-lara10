@@ -1,5 +1,5 @@
-<x-layout title="{{ $post['title'] }}">
+<x-defaultLayout title="{{ $post['title'] }}">
    
     <x-post :$post />
 
-    </x-layout>
+    </x-defaultLayout>

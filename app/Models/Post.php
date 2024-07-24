@@ -41,7 +41,7 @@ class Post extends Model
 
            $query -> where(
 
-                'category_id', $filters['category']->id ?? filters['category']
+                'category_id', $filters['category']->id ?? $filters['category']
     
            );
                 

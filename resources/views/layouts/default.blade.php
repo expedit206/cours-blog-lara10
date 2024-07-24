@@ -63,7 +63,7 @@ article">
     <li><a href="" class="block px-4 py-2 text-sm text-gray-700 
         hover:bg-gray-100">Connexion</a></li>
         <li>
-            <a href="" class="flex items-center px-4 py-2 font-semibold 
+            <a href="{{ route('register') }}" class="flex items-center px-4 py-2 font-semibold 
             text-sm text-indigo-700 hover:bg-gray-100">
             Inscription
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2020" fill="currentColor" class="w-5 h-5 ml-1">
@@ -75,9 +75,9 @@ article">
     </ul>
     
     <ul class="hidden md:flex space-x-12 font-semibold">
-        <li><a href="">Connexion</a></li>
+        <li><a href="{{ route('register') }}">Connexion</a></li>
         <li>
-            <a href="" class="flex items-center group text-indigo-700">
+            <a href="{{ route('register') }}" class="flex items-center group text-indigo-700">
                 Inscription
                 <svg aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
