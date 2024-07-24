@@ -18,11 +18,19 @@
     
     <h1 class="font-bold text-slate-900 text-3xl lg:text-5xl 
     leading-tight">{{$post['title']}}</h1>
+    
+    @if ($post->tags->isNotEmpty())
+      
     <ul class="flex flex-wrap gap-2">
-    <li><a href="" class="px-3 py-1 bg-indigo-700 textindigo-50 rounded-full text-sm text-white">Tag 1</a></li>
-    <li><a href="" class="px-3 py-1 bg-indigo-700 textindigo-50 rounded-full text-sm text-white">Tag 2</a></li>
-    <li><a href="" class="px-3 py-1 bg-indigo-700 textindigo-50 rounded-full text-sm text-white">Tag 3</a></li>
+      @foreach ($post->tags as $tag)
+          
+      <li><a href="" class="px-3 py-1 bg-indigo-700 textindigo-50 rounded-full text-sm text-white">{{ $tag->name }}</a></li>
+      
+      @endforeach
+
     </ul>
+    @endif
+
 
     <p class="text-xl lg:text-2xl text-slate-600">
         @if ($list)
