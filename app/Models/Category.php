@@ -9,11 +9,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
+    use HasFactory;
 
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
     }
 
-    use HasFactory;
+    public function getRouteKeyName(): string
+    {
+        return 'slug'; 
+    }
+
+    
 }

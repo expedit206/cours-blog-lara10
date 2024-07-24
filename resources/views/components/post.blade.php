@@ -12,7 +12,7 @@
 
     @if ($post->category)
       
-    <a href="" class="underline font-bold text-slate-900 textlg">{{ $post->category->name }}</a>
+    <a href="{{ route('posts.byCategory', ['category'=>$post->category]) }}" class="underline font-bold text-slate-900 textlg">{{ $post->category->name }}</a>
     
     @endif
     
