@@ -13,20 +13,9 @@ class PostController extends Controller
 {
     public function index(Request $request):View
     {
-        $posts = Post::query();
+        // retourne la vue indes avec le parametre specifier dans la methode postsView pour la facto
 
-        if($search = $request ->search){
-            $posts ->where(fn (Builder $query)=>$query
-
-            ->where('title', 'LIKE', '%' .$search .'%')
-            ->orWhere('content', 'LIKE', '%' .$search .'%')
-        );
-  }
-        
-        $posts = $posts->latest()->paginate(10 );
-
-        $total = $posts->count();
-        return view('posts/index', compact('posts', 'total'));
+        return $this->postsView($request -> search ? ['search' => $request->search]:[]);
     }
 
     public function show(Post $post):View{
@@ -37,27 +26,28 @@ class PostController extends Controller
 
     public function postsByCategory(Category $category)
     {
-        $posts =Post::where(
-
-            'category_id', $category->id
-
-            )->latest()->paginate(10);
-            
-            $total = $posts->count();
-
-                
-        return view('posts/index', compact('posts','total'));
+        return $this->postsView(compact('category'));
+    
     }
 
     public function postsByTag(Tag $tag)
     {
-        $posts =Post::whereRelation(
-            'tags', 'tags.id', $tag->id
-            )->latest()->paginate(10);
+        return $this->postsView(compact('tag'));
+
+    }
+    
+    // pour retourner la vue de la facto(filters) fait par la methode scope dans le model post
+
+    protected function postsView(array $filters): View
+    {
+        $posts = Post::filters($filters)->latest()->paginate(10);
             
             $total = $posts->count();
-
+    
                 
         return view('posts/index', compact('posts','total'));
+    
+
     }
+
 }
