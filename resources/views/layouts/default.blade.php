@@ -93,11 +93,11 @@ article">
                         class="block px-4 py-2 text-sm text-gray-700 
                 hover:bg-gray-100">Mon compte</a></li>
                 <li>
-                    <li><a @click.prevent="$refs.logout" href=""
+                    <li><a @click.prevent="$refs.logout" href="{{ route('logout') }}"
                         class="block px-4 py-2 text-sm text-gray-700 
     hover:bg-gray-100">Deconnexion</a></li>
 
-                        <form x-ref="logout" action="" method="post" class="hidden" action="">
+                        <form x-ref="logout" action="{{  route('logout') }}" method="post" class="hidden" action="">
 
                             @csrf
 
