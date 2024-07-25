@@ -30,7 +30,7 @@
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
             <div class="bg-black text-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
                 <form class="space-y-6" action=" {{ $action }}" method="POST" novalidate>
-                    
+                    @csrf
                     {{ $slot }}
                  
                     <div>

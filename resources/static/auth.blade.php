@@ -49,6 +49,7 @@
                                 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-950 sm:textsm sm:leading-6">
                         </div>
                     </div>
+                    
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
                             <input id="remember" name="remember" type="checkbox"
@@ -58,6 +59,7 @@
                             </label>
                         </div>
                     </div>
+
                     <div>
                         <button type="submit" class="flex w-full justify-center
                         rounded-md bg-green-950 px-3 py-1.5 text-sm font-semibold leading-6 hover:text-green950 text-green-300 shadow-sm hover:bg-green-300 focus-visible:outline focus-
