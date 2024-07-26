@@ -1,23 +1,26 @@
     <div>
         <label for="{{ $id }}" class="block text-sm font-medium leading-6 text-gray900">{{ $label }}</label>
-        <div @class(['mt-2 w-full', 'relative rounded-md shadow-sm' => $errors->has($name)])>
+        <div @class(['mt-2 w-full', 'relative rounded-md shadow-sm' => $errors->has($name) && $type!=='file'])>
             <input
              id="{{ $id }}" 
             name="{{ $name }}"
             type="{{ $type }}"
-             value="{{ old($name) ?? $value }}"
-             @class([
+
+            @if ($type!== 'file')
+                
+            value="{{ old($name) ?? $value }}"
+            @class([
                 'w-full pr-10 text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500'=> $errors->has($name),
                 'w-full text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300
                 placeholder:text-gray-400 focus:ring-2 focus:ring-indogo-600'=> !$errors->has($name),
-                 
+                
                  ])
-              autocomplete="current-password">
-    
-
+              @endif
+              >
+              
             
 
-        @error($name)
+        @error($name && $type!=='file')
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center 
         ">
             <svg class="h-5 w-5 text-red-500" viewBox="0 0 20 20" fill="currentColor"

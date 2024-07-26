@@ -15,10 +15,14 @@
                     <x-input name="title" label="Titre" />
 
                     <x-input name="slug" label="slug" help="Laisser vide pour un slug auto. si une valeur est rensignée, elle sera slugifiée avant d'être soumise a la validation" />
-                    <x-textarea name="content" lable="Contenu du post"></x-textarea>
-                    {{-- {{ input file thumbnail }} --}}
-                    {{-- {{ select cate }} --}}
-                    {{-- {{ select multi tagid }} --}}
+                    <x-textarea name="content" label="Contenu du post">vcs</x-textarea>
+                    
+                    <x-input name="thumbnail" label="Image de couverture" type='file' />
+                    
+
+                    <x-select name="category_id" label="categorie" :list="$categories" />
+
+                    <x-select name="tag_ids" label="Etiquettes" :list="$tags" multiple/>
                 <div>
 
             </div>

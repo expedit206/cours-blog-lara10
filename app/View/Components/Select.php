@@ -4,8 +4,9 @@ namespace App\View\Components;
 
 use Closure;
 use Illuminate\View\Component;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\View;
 use LaravelLang\Dev\Commands\Collect;
+use Illuminate\Database\Eloquent\Collection;
 
 class Select extends Component
 {
@@ -23,10 +24,10 @@ class Select extends Component
         public string $optionValuesText = 'name',
         public mixed $value = null,
         public bool $multiple = false,
-        public bool $help = '',
+        public string $help = '',
     )
     {
-        $this->id ?? = $this->name;
+        $this->id ??= $this->name;
 
         $this-> handleValue();
 
@@ -46,7 +47,7 @@ class Select extends Component
     /**
      * Get the view / contents that represent the component.
      */
-    public function render(): View|Closure|string
+    public function render()
     {
         return view('components.select');
     }
