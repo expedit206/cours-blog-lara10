@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
@@ -27,6 +28,11 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+Route::patch('/home', [HomeController::class, 'updatePassword']);//mon patch n'a pas pris ici
+
+
+Route::resource('/admin/posts', AdminController::class,)->except('show')->names('admin.posts');
+
 Route::get('/', [PostController::class, 'index'])->name('index');
 
 Route::get('/categories/{category}', [PostController::class, 'postsByCategory'])->name('posts.byCategory');
@@ -34,3 +40,5 @@ Route::get('/categories/{category}', [PostController::class, 'postsByCategory'])
 Route::get('/tags/{tag}', [PostController::class, 'postsByTag'])->name('posts.byTag');
 
 Route::get('/{post}', [PostController::class, 'show'])->name('posts.show');
+
+Route::post('/{post}/comment', [PostController::class, 'comment'])->name('posts.comment');

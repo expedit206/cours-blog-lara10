@@ -92,6 +92,10 @@ article">
                     <li><a href="{{ route('home') }}"
                         class="block px-4 py-2 text-sm text-gray-700 
                 hover:bg-gray-100">Mon compte</a></li>
+                        
+                    <li><a href="{{ route('admin.posts.index') }}"
+                        class="block px-4 py-2 text-sm text-gray-700 
+                hover:bg-gray-100">Gestion des Posts</a></li>
                 <li>
                     <li><a @click.prevent="$refs.logout" href="{{ route('logout') }}"
                         class="block px-4 py-2 text-sm text-gray-700 
