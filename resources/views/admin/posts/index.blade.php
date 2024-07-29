@@ -11,50 +11,48 @@
             </div>
 
             <div class="mt-5">
-                <a href="{{ route('admin.posts.create') }}" class="bg-violet-600 rounded-md p-2 text-white font-bold">Creer un post</a>
+                <a href="{{ route('admin.posts.create') }}" class="bg-violet-100 rounded-md p-2 text-black font-bold">Creer un post</a>
             </div>
 
         </div>
     </div>
 
-    <div class="">
-        <table>
+    <div class="flex justify-center ">
+        <table border="3" class="w-[95%]">
 
-            <thead>
+            <thead class="border-2 ">
 
                 <tr>
                     <th>Titre</th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th colspan="3">Action</th>
             </tr>
                 </thead>
 
 
-                <tbody>
+                <tbody class="border-2">
 
                     @foreach ($posts as $post )
                         
-                    <tr class="even:bg-gray-100">
+                    <tr class="even:bg-gray-700 border-2 ">
 
-                        <td>{{ $post->title }}</td>
+                        <td class="text-start p-2 font-bold">{{ $post->title }}</td>
                       
                         <td>
 
-                            <a href="{{ route('posts.show', ['post'=>$post]) }}" target="_blank">Voir le post</a>
+                            <a href="{{ route('posts.show', ['post'=>$post]) }}" class="bg-opacity-20 border-1 bg-green-600  rounded-lg p-1" target="_blank">Voir le post</a>
                             
                         </td>
                         
                         <td>
                             
-                            <a href="{{ route('admin.posts.edit', ['post'=>$post]) }}">Editer</a>
+                            <a href="{{ route('admin.posts.edit', ['post'=>$post]) }} " class="alert alert-success px-3 py-1">Editer</a>
                             
                         </td>
 
                         <td  x-data>
                         
                             <a href="#" 
-                            class='supp'
+                            class='bg-opacity-30 border-1 supp bg-red-600 rounded-lg p-1 text-white ' 
                             onclick="
                             let form = document.querySelector('.form')
                          form.submit()

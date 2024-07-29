@@ -40,6 +40,6 @@ class RegisterController extends Controller
        
        Auth::login($user); //utilisateur  uthentofier
 
-    return redirect()->route('home')->with('status', 'Inscription reussi !'); 
+    return redirect()->route('admin.posts')->with('status', 'Inscription reussi !'); 
     }
 }
