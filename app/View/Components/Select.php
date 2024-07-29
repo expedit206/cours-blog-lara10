@@ -4,9 +4,8 @@ namespace App\View\Components;
 
 use Closure;
 use Illuminate\View\Component;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\View;
-use LaravelLang\Dev\Commands\Collect;
-use Illuminate\Database\Eloquent\Collection;
 
 class Select extends Component
 {

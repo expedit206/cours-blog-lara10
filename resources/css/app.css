@@ -4,7 +4,61 @@
 
 @tailwind utilities;
 
-
+.black{
+    color: black;
+}
+a{
+    text-decoration: none !important;
+}
+a:hover{
+    text-decoration: underline !important;
+    transform: scale(1.03);
+}
 [x-cloak] {
-    /* display: none !important; */
+    display: none !important;
+}
+.link{
+    position: relative;
+    text-align: center;
+    transition: .2s ease-in;
+}
+.link:hover::before{
+    content:"";
+    position: absolute;
+    background-color: rgb(88, 88, 144);
+    padding: 0.3rem;
+    z-index: -1;
+    transform: translate(-10%);
+    @apply text-white w-[130%] h-[130%] rounded-lg ;
+}
+.link:hover{
+    color: white !important;
+} 
+
+article p,
+article ul,
+article h1
+{
+    display: flex;
+    justify-content: start;
+    text-align: left;
+}
+@media (prefers-color-scheme:dark){
+    body{
+        background-color: white;
+        color: white !important;
+    }
+    a:not(.link){
+        color: rgb(110, 95, 221) !important;
+    }
+    .black{
+        @apply text-slate-300;   
+    }
+    .tag{
+        @apply bg-indigo-200 text-sm font-bold !important;
+    }
+    .comment{
+        @apply bg-slate-600
+    }
+    
 }

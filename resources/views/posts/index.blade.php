@@ -1,6 +1,7 @@
 <x-default-layout>
 
     Nombre d'article : {{ $total }}
+
     @forelse($posts as $post)
         <x-post :$post list />
 

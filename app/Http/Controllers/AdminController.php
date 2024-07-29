@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Post;
 use App\Models\Tag;
-use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Models\Category;
+use Illuminate\Support\Str;
+use App\Http\Requests\PostRequest;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\View\View;
 
 class AdminController extends Controller
 {
@@ -29,23 +33,14 @@ class AdminController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create():View
     {
-        return view('admin.posts.form', [
-            'categories' => Category::orderBy('name')->get(),
-            'tags' => Tag::orderBy('name')->get(),
-        ]);
-    }
+      return $this ->showForm();
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
     }
+    
 
-    /**
+        /**
      * Display the specified resource.
      */
 
@@ -54,22 +49,66 @@ class AdminController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+
+        return $this ->showForm($post);
+
     }
+
+    public function showForm(Post $post = new Post):View
+    {
+        return view('admin.posts.form', [
+            'post'=>$post,
+            'categories' => Category::orderBy('name')->get(),
+            'tags' => Tag::orderBy('name')->get(),
+        ]);
+    }
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(PostRequest $request)
+    {
+    return $this->save($request->validated());
+   }
+
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(PostRequest $request, Post $post)
     {
-        //
+    return $this->save($request->validated(), $post);
+        
     }
 
+    protected function save(array $data, Post $post = null):RedirectResponse
+    {
+        if(isset($data['thumbnail'])){
+            if(isset($post->thumbnail)){
+                Storage::delete($post->image);
+            }
+            $data['thumbnail'] = $data['thumbnail']->store('thumbnails');
+
+        }
+        $data['excerpt'] = Str::limit($data['content'], 150);
+        var_dump($data);
+        var_dump($post);
+        $post=Post::updateOrCreate(['id'=>$post?->id], $data);
+ 
+        $post->tags()->sync($data['tags_ids'] ?? null); // ca supprime les ancienne relation et creer les nouvelle qui se trouve dans la table posts_tag
+ 
+        return redirect()->route('posts.show', ['post'=> $post])->with('status', $post->wasRecentlyCreated ? 'Post publié ! ' : 'Post mis a jour !' );
+    
+
+    }
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function destroy(Post $post):RedirectResponse
     {
-        //
+        Storage::delete($post->thumbnail);
+
+        $post->delete();
+       return redirect()->route('admin.posts.index');
     }
 }

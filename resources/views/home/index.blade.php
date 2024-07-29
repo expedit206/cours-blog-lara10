@@ -1,18 +1,18 @@
 <x-defaultLayout title="Mon compte">
 
-    <form action="{{ route('home') }}"  method='POST'>
+    <form action="{{ route('home') }}"  method='POST' class="flex justify-center items-center">
         
         @csrf
         @method('PATCH') 
         {{-- //ca ne prend pas --}}
 
         <div class="">
-            <div class="">
-                <h1><b>Mot de passe</b></h1>
+            <div class="flex justify-center items-center flex-col ">
+                <h1><b class="">Mot de passe</b></h1>
                 <p>Vous pouvez modifier votre mot de passe pour vos futurs creation.</p>
 
 
-                <div class="mt-10 spave-y-8 md:w-2/3">
+                <div class="bg-slate-600 p-3 rounded-lg mt-10 spave-y-8 md:w-2/3">
                     <x-input type="password" name="current_password" label="Mot de passe actuel" />
 
                     <x-input type="password" name="password" label="Nouveau Mot de passe actuel" />

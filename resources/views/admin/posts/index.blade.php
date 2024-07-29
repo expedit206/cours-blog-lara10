@@ -53,21 +53,23 @@
 
                         <td  x-data>
                         
-                            <a href="
-                            {{-- {{ route('admin.posts.destroy', ['post'=>$post]) }} --}}
-                             #
-                            " 
+                            <a href="#" 
+                            class='supp'
+                            onclick="
+                            let form = document.querySelector('.form')
+                         form.submit()
+                            "
                                   {{-- @click.prevent ="$refs.delete.submit()" --}}
                                   >
                                   Supprimer
                                 </a>
 
-                            {{-- <form  x-ref="delete"  action="{{route('admin.posts.destroy', ['post'=>$post]) }}" method='POST'>
+                            <form  x-ref="delete" class="form"  action="{{route('admin.posts.destroy', ['post'=>$post]) }}" method='POST'>
                                 @csrf
 
                                 @method('DELETE')
                                  
-                            </form> --}}
+                            </form>
                         
                         </td>
 

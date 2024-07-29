@@ -15,7 +15,8 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         $categories = collect(['BackEnd','FrontEnd', 'Fullstack']);
-        $categories->each(fn ($category) => Category::create([
+        $categories->each(fn ($category)
+         => Category::create([
                 'name'=>$category,
                 'slug'=>Str::slug($category),
             ])

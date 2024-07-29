@@ -4,6 +4,7 @@ namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\Component;
 
 class Input extends Component
@@ -25,6 +26,10 @@ class Input extends Component
         $this->id ??= $this->name;   
     }
 
+    public function isImage()
+    {
+        return str_starts_with(Storage::mimeType($this->value), 'image/'); //Verifie si le fichier passer en valeur a un minetype qui commence par "/image". Car les minetype des fichier image se presente comme ceci : "/image/nom_de_l'image" 
+    }
     /**
      * Get the view / contents that represent the component.
      */

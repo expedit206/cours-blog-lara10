@@ -14,6 +14,7 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $guarded =['id', 'created_at', 'updated_at'];
     protected $width=[
     
     'category', 
@@ -61,6 +62,10 @@ class Post extends Model
 
 
     }   
+
+    public function exists(): bool{
+        return (bool) $this->id;        
+    }
 
     public function category(): BelongsTo
         {
