@@ -9,7 +9,7 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): 
+    public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
             $table-> foreignId('category_id')->after('id')-> nullable()->constrained()->nullOnDelete();

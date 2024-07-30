@@ -88,11 +88,12 @@ border-b border-b-slate-300  shadow-sm shadow-black rounded-md flex items-center
                     <li><a href="{{ route('home') }}"
                         class="block px-4 py-2 text-sm text-gray-700 
                 hover:bg-gray-100">Mon compte</a></li>
-                        
+                        @if(Auth::user()->isAdmin() )
                     <li><a href="{{ route('admin.posts.index') }}"
                         class="block px-4 py-2 text-sm text-gray-700 
                 hover:bg-gray-100">Gestion des Posts</a></li>
                 <li>
+                    @endif
                     <li><a @click.prevent="$refs.logout" href="{{ route('logout') }}"
                         class="block px-4 py-2 text-sm text-gray-700 
     hover:bg-gray-100">Deconnexion</a></li>

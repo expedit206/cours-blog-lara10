@@ -7,7 +7,7 @@
         rows="10"
          @class([
             'form-textarea pr-10 text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500'=> $errors->has($name),
-            'w-full text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300
+            'w-full shadow-sm ring-1 ring-inset ring-gray-300
             placeholder:text-gray-400 focus:ring-2 focus:ring-indogo-600'=> !$errors->has($name),
              
              ])
